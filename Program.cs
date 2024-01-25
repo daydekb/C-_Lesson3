@@ -150,22 +150,21 @@ using System.Diagnostics.Contracts;
 
 int[] NumToArr(int num)
 {
+    int[] array = new int[3];
     if(num >= 100 && num <= 999)
     {
-        int[] array = new int[3];
         int ed = num % 10;
         int dec = num / 10 % 10;
         int sot = num / 100;
         array[0] = ed;
         array[1] = dec;
         array[2] = sot;
-        return array;
     }
     else
     {
         Console.WriteLine("Введено не трёхзначное число");
-        return null;
     }
+    return array;
 }
 
 void PrintArray(int[] array)
