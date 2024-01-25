@@ -100,24 +100,72 @@
 using System.Collections;
 using System.Diagnostics.Contracts;
 
-int[] CreateRandomArray(int size, int min, int max)
-{
-    int[] array = new int[size];
-    for (int i = 0; i < array.Length; i++)
-    {
-        array[i] = new Random().Next(min, max + 1);
-    }
-    return array;
-}
+// int[] CreateRandomArray(int size, int min, int max)
+// {
+//     int[] array = new int[size];
+//     for (int i = 0; i < array.Length; i++)
+//     {
+//         array[i] = new Random().Next(min, max + 1);
+//     }
+//     return array;
+// }
 
-int[] MultiplicationPairs(int[] array)
+// int[] MultiplicationPairs(int[] array)
+// {
+//     int[] TempArray = new int[array.Length / 2];
+//     for (int i = 0; i < array.Length / 2; i++)
+//     {
+//         TempArray[i] = array[i] * array[array.Length - i - 1];
+//     }
+//     return TempArray;
+// }
+
+// void PrintArray(int[] array)
+// {
+//     for (int i = 0; i < array.Length; i++)
+//     {
+//         Console.Write(array[i] + " ");
+//     }
+//     Console.WriteLine();
+// }
+
+// Console.WriteLine("Input array size");
+// int size = Convert.ToInt32(Console.ReadLine());
+// Console.WriteLine("Input minimal value");
+// int min = Convert.ToInt32(Console.ReadLine());
+// Console.WriteLine("Input maximal value");
+// int max = Convert.ToInt32(Console.ReadLine());
+
+// int[] array = CreateRandomArray(size, min, max);
+// PrintArray(array);
+// PrintArray(MultiplicationPairs(array));
+
+// Условия задачи №4:
+// Дано натуральное трёхзначное число. Создайте массив, состоящий из
+// цифр этого числа. Младший разряд числа должен располагаться на 0-
+// м индексе массива, старший – на 2-м.
+// Пример
+// 456 => [6 5 4]
+// 781 => [1 8 7]
+
+int[] NumToArr(int num)
 {
-    int[] TempArray = new int[array.Length / 2];
-    for (int i = 0; i < array.Length / 2; i++)
+    if(num >= 100 && num <= 999)
     {
-        TempArray[i] = array[i] * array[array.Length - i - 1];
+        int[] array = new int[3];
+        int ed = num % 10;
+        int dec = num / 10 % 10;
+        int sot = num / 100;
+        array[0] = ed;
+        array[1] = dec;
+        array[2] = sot;
+        return array;
     }
-    return TempArray;
+    else
+    {
+        Console.WriteLine("Введено не трёхзначное число");
+        return null;
+    }
 }
 
 void PrintArray(int[] array)
@@ -129,13 +177,7 @@ void PrintArray(int[] array)
     Console.WriteLine();
 }
 
-Console.WriteLine("Input array size");
-int size = Convert.ToInt32(Console.ReadLine());
-Console.WriteLine("Input minimal value");
-int min = Convert.ToInt32(Console.ReadLine());
-Console.WriteLine("Input maximal value");
-int max = Convert.ToInt32(Console.ReadLine());
+Console.WriteLine("Input num: ");
+int num = Convert.ToInt32(Console.ReadLine());
 
-int[] array = CreateRandomArray(size, min, max);
-PrintArray(array);
-PrintArray(MultiplicationPairs(array));
+PrintArray(NumToArr(num));
