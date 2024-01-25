@@ -62,3 +62,32 @@ int[] CreateRandomArray(int size, int min, int max)
     }
     return array;
 }
+
+int[] ReplacingSign(int[] array)
+{
+    for (int i = 0; i < array.Length; i++)
+    {
+        array[i] = array[i] * (-1);
+    }
+    return array;
+}
+
+void PrintArray(int[] array)
+{
+    for (int i = 0; i < array.Length; i++)
+    {
+        Console.Write(array[i] + " ");
+    }
+    Console.WriteLine();
+}
+
+Console.WriteLine("Input array size");
+int size = Convert.ToInt32(Console.ReadLine());
+Console.WriteLine("Input minimal value");
+int min = Convert.ToInt32(Console.ReadLine());
+Console.WriteLine("Input maximal value");
+int max = Convert.ToInt32(Console.ReadLine());
+
+int[] array = CreateRandomArray(size, min, max);
+PrintArray(array);
+PrintArray(ReplacingSign(array));
